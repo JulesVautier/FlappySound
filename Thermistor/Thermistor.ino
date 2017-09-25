@@ -117,10 +117,10 @@ int Calcul_Temp(int RawADC)
 }
 
 // Display the tab like in Excel
-void createTab()
+void Create_Tab()
 {
- int i = 0;
- while (i < 1000)
+ int i = 1;
+ while (i < 1024)
   {
     Serial.print("{ ");
     Serial.print(i);
@@ -136,7 +136,7 @@ void createTab()
 int Calcul_Temp_Tab(int RawADC)
 {
  int i = 0;
- while(tab[i][0] < RawADC)
+ while(tab[i][0] < RawADC && i < 990)
  {
   i++;
  }
@@ -159,7 +159,9 @@ void Unit_Test()
 
 void setup() {
  Serial.begin(57600);
- Unit_Test();
+ //Unit_Test();
+ //delay(10000000);
+ Create_Tab();
  delay(10000000);
 }
 
