@@ -147,9 +147,9 @@ int Calcul_Temp_Tab(int RawADC)
 void Unit_Test()
 {
   int adc;
-  adc = 0;
-  while( adc<1024) {
-    int temp = Calcul_Temp_Tab(ADC);
+  adc = 1;
+  while( adc<990) {
+    int temp = Calcul_Temp_Tab(adc);
     Serial.print(adc);
     Serial.print(" , ");
     Serial.println(temp);
