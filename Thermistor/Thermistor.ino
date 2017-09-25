@@ -164,7 +164,7 @@ void Unit_Test()
   int adc;
   adc = 1;
   while( adc<990) {
-    int temp = Calcul_Temp_Tab(adc);
+    float temp = Calcul_Temp_Tab(adc);
     Serial.print(adc);
     Serial.print(" , ");
     Serial.println(temp);
@@ -175,7 +175,7 @@ void Unit_Test()
 
 void setup() {
  Serial.begin(57600);
- //Unit_Test();
+ Unit_Test();
  //Create_Tab();
 }
 
