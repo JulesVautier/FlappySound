@@ -133,14 +133,23 @@ void Create_Tab()
 }
 
 // Esay way to calculate the temp with the tab
-int Calcul_Temp_Tab(int RawADC)
+float Calcul_Temp_Tab(int RawADC)
 {
  int i = 0;
+ float res = 0.0;
+ float coef = 0.0;
+ 
  while(tab[i][0] < RawADC && i < 990)
  {
   i++;
  }
- return (tab[i][1]);  
+ if (RawADC % 10 != 0)
+ {
+   coef = (float(tab[i][1]) - float(tab[i - 1][1])) / 10.0;
+   res = float(tab[i - 1][1]) + coef * float(RawADC % 10);
+   return (res);
+ }
+ return (tab[i][1]);
 }
 
 // Function for unit_testing
@@ -161,8 +170,9 @@ void setup() {
  Serial.begin(57600);
  //Unit_Test();
  //delay(10000000);
- Create_Tab();
- delay(10000000);
+ 
+ //Create_Tab();
+ //delay(10000000);
 }
 
 void loop()
