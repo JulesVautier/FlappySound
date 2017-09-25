@@ -132,6 +132,7 @@ void createTab()
   delay(10000000);
 }
 
+// Esay way to calculate the temp with the tab
 int Calcul_Temp_Tab(int RawADC)
 {
  int i = 0;
@@ -139,14 +140,29 @@ int Calcul_Temp_Tab(int RawADC)
  {
   i++;
  }
- return(tab[i][1]);  
+ return (tab[i][1]);  
+}
+
+// Function for unit_testing
+void Unit_Test()
+{
+  int adc;
+  adc = 0;
+  while( adc<1024) {
+    int temp = Calcul_Temp_Tab(ADC);
+    Serial.print(adc);
+    Serial.print(" , ");
+    Serial.println(temp);
+    adc = adc + 1;
+  }
 }
 
 void setup() {
  Serial.begin(57600);
+ Unit_Test();
+ delay(10000000);
 }
 
-// Esay way to calculate the temp with the tab
 void loop()
 {
  int RawADC = analogRead(SENS_PIN);
