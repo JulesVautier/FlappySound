@@ -1,7 +1,7 @@
 #include <math.h>
 
 #define SENS_PIN 0
-
+ 
 // ADC , Temp , Coef i - 1
 int tab[110][3] = {
 { 1 , -8698 , 1860 },
@@ -158,7 +158,7 @@ void Create_Tab()
 float Calcul_Temp_Tab(int RawADC)
 {
  int i = 0;
- int res = 0.0;
+ int res = 0;
  
  while(tab[i][0] < RawADC && i < 990)
  {
