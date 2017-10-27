@@ -3,8 +3,7 @@ import random
 import sys
 
 import pygame
-from pygame.locals import *
-
+from pygame import  *
 
 FPS = 30
 SCREENWIDTH  = 288
@@ -157,6 +156,7 @@ def showWelcomeAnimation():
     # player shm for up-down motion on welcome screen
     playerShmVals = {'val': 0, 'dir': 1}
 
+
     while True:
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
@@ -226,8 +226,16 @@ def mainGame(movementInfo):
     playerFlapAcc =  -9   # players speed on flapping
     playerFlapped = False # True when player flaps
 
+    import serial
+
+    connected = False
+    ser = serial.Serial("COM5", 9600)
+    while not connected:
+        serin = ser.read()
+        connected = True
 
     while True:
+        print(ser.read(), '\n')
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                 pygame.quit()
