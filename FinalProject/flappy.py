@@ -235,7 +235,19 @@ def mainGame(movementInfo):
         connected = True
 
     while True:
-        print(ser.read(), '\n')
+        sound = 0
+        size = ser.inWaiting()
+        if (size > 1):
+            sound = ser.readline()
+            sound = sound.decode("utf-8")
+            sound = int(sound)
+            print("after", sound)
+            if sound > 25 or sound < 18:
+                if playery > -2 * IMAGES['player'][0].get_height():
+                    playerVelY = playerFlapAcc
+                    playerFlapped = True
+                    SOUNDS['wing'].play()
+
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                 pygame.quit()
@@ -249,17 +261,17 @@ def mainGame(movementInfo):
         # check for crash here
         crashTest = checkCrash({'x': playerx, 'y': playery, 'index': playerIndex},
                                upperPipes, lowerPipes)
-        if crashTest[0]:
-            return {
-                'y': playery,
-                'groundCrash': crashTest[1],
-                'basex': basex,
-                'upperPipes': upperPipes,
-                'lowerPipes': lowerPipes,
-                'score': score,
-                'playerVelY': playerVelY,
-                'playerRot': playerRot
-            }
+        # if crashTest[0]:
+        #     return {
+        #         'y': playery,
+        #         'groundCrash': crashTest[1],
+        #         'basex': basex,
+        #         'upperPipes': upperPipes,
+        #         'lowerPipes': lowerPipes,
+        #         'score': score,
+        #         'playerVelY': playerVelY,
+        #         'playerRot': playerRot
+        #     }
 
         # check for score
         playerMidPos = playerx + IMAGES['player'][0].get_width() / 2

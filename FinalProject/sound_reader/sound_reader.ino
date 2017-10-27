@@ -12,7 +12,8 @@ void setup(){
 } 
    
 void loop (){ 
-  val =analogRead(1); 
+  val =analogRead(0); 
   Serial.print (val); 
-  delay(100); 
+  Serial.print('\n');
+  delay(50); 
 } 
