@@ -228,6 +228,8 @@ def mainGame(movementInfo):
 
     import serial
 
+    file_data = open("../data.txt", "w+")
+
     connected = False
     ser = serial.Serial("COM5", 9600)
     while not connected:
@@ -240,8 +242,8 @@ def mainGame(movementInfo):
         if (size > 1):
             sound = ser.readline()
             sound = sound.decode("utf-8")
+            file_data.write(sound)
             sound = int(sound)
-            print("after", sound)
             if sound > 25 or sound < 18:
                 if playery > -2 * IMAGES['player'][0].get_height():
                     playerVelY = playerFlapAcc
@@ -334,7 +336,7 @@ def mainGame(movementInfo):
         visibleRot = playerRotThr
         if playerRot <= playerRotThr:
             visibleRot = playerRot
-        
+
         playerSurface = pygame.transform.rotate(IMAGES['player'][playerIndex], visibleRot)
         SCREEN.blit(playerSurface, (playerx, playery))
 
