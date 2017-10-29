@@ -1,5 +1,6 @@
 from itertools import cycle
 import random
+import os
 import sys
 
 import pygame
@@ -228,7 +229,7 @@ def mainGame(movementInfo):
 
     import serial
 
-    file_data = open("../data.txt", "w+")
+    file_data = open("../data.txt", "a")
 
     connected = False
     ser = serial.Serial("COM5", 9600)
@@ -243,6 +244,8 @@ def mainGame(movementInfo):
             sound = ser.readline()
             sound = sound.decode("utf-8")
             file_data.write(sound)
+            file_data.flush()
+            print(sound)
             sound = int(sound)
             if sound > 25 or sound < 18:
                 if playery > -2 * IMAGES['player'][0].get_height():
@@ -263,17 +266,17 @@ def mainGame(movementInfo):
         # check for crash here
         crashTest = checkCrash({'x': playerx, 'y': playery, 'index': playerIndex},
                                upperPipes, lowerPipes)
-        # if crashTest[0]:
-        #     return {
-        #         'y': playery,
-        #         'groundCrash': crashTest[1],
-        #         'basex': basex,
-        #         'upperPipes': upperPipes,
-        #         'lowerPipes': lowerPipes,
-        #         'score': score,
-        #         'playerVelY': playerVelY,
-        #         'playerRot': playerRot
-        #     }
+        if crashTest[0]:
+            return {
+                'y': playery,
+                'groundCrash': crashTest[1],
+                'basex': basex,
+                'upperPipes': upperPipes,
+                'lowerPipes': lowerPipes,
+                'score': score,
+                'playerVelY': playerVelY,
+                'playerRot': playerRot
+            }
 
         # check for score
         playerMidPos = playerx + IMAGES['player'][0].get_width() / 2
