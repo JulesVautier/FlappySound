@@ -44,7 +44,7 @@ Monitoring with GUI
 ----
 10. Go in the `GUI` folder and `pip install requirement.txt`.
 
-11. Run `python flappy.py` while playing to see the values from the sound sensor.
+11. Run `python gui.py` while playing to see the values from the sound sensor.
 
 Works on Windows
 
