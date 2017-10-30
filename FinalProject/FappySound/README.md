@@ -1,22 +1,25 @@
-FlappyBirdClone
+FlappySound
 ===============
 
-A Flappy Bird Clone made using [python-pygame][1]
+A Flappy Bird Clone made using [python-pygame][1] playable with your voice using arduino and sound sensor
+It's a fork from an existing project: `git clone https://github.com/sourabhv/FlappyBirdClone.git` or click `Download ZIP` in right panel and extract it.
+The code was great and well documented, really big thanks to https://github.com/sourabhv
+I modified some element of the game to make it easier to play with voice
 
 How-to
 ------
 
 1. Install Python 2.7.X or 3.5.x from [here](https://www.python.org/download/releases/)
 
-2. Install PyGame 1.9.X from [here](http://www.pygame.org/download.shtml)
+2. Clone this repository
 
-3. Clone this repository: `git clone https://github.com/sourabhv/FlappyBirdClone.git` or click `Download ZIP` in right panel and extract it.
+3. Go in the `FlappySound` folder and `pip install requierment.txt`
 
-4. Run `python flappy.py` from the repo's directory
+4. Edit `flappy.py` and change the variable `Port` by the port used by your arduino
 
-5. use <kbd>&uarr;</kbd> or <kbd>Space</kbd> key to play and <kbd>Esc</kbd> to close the game.
+5. Run `python flappy.py`
 
-  (Note: Install pyGame for same version python as above)
+6. use <kbd>&uarr;</kbd> or <kbd>Space</kbd> key to play and <kbd>Esc</kbd> to close the game.
 
   (For x64 windows, get exe [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/#pygame))
 

@@ -32,5 +32,6 @@ setup(
         ]
     }],
 
-    zipfile=None, requires=['serial']
+    zipfile=None,
+    requires=['serial']
 )

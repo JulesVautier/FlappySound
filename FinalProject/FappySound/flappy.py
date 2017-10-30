@@ -6,6 +6,8 @@ import sys
 import pygame
 from pygame import  *
 
+Port = "COM5" #PUT the port where arduino is plugged
+
 FPS = 30
 SCREENWIDTH  = 288
 SCREENHEIGHT = 512
@@ -232,7 +234,7 @@ def mainGame(movementInfo):
     file_data = open("../data.txt", "a")
 
     connected = False
-    ser = serial.Serial("COM5", 9600)
+    ser = serial.Serial(Port, 9600)
     while not connected:
         serin = ser.read()
         connected = True
@@ -266,17 +268,17 @@ def mainGame(movementInfo):
         # check for crash here
         crashTest = checkCrash({'x': playerx, 'y': playery, 'index': playerIndex},
                                upperPipes, lowerPipes)
-        if crashTest[0]:
-            return {
-                'y': playery,
-                'groundCrash': crashTest[1],
-                'basex': basex,
-                'upperPipes': upperPipes,
-                'lowerPipes': lowerPipes,
-                'score': score,
-                'playerVelY': playerVelY,
-                'playerRot': playerRot
-            }
+        # if crashTest[0]:
+        #     return {
+        #         'y': playery,
+        #         'groundCrash': crashTest[1],
+        #         'basex': basex,
+        #         'upperPipes': upperPipes,
+        #         'lowerPipes': lowerPipes,
+        #         'score': score,
+        #         'playerVelY': playerVelY,
+        #         'playerRot': playerRot
+        #     }
 
         # check for score
         playerMidPos = playerx + IMAGES['player'][0].get_width() / 2
