@@ -17,7 +17,7 @@ Arduino setup
 2. Download [Arduino IDE](https://www.arduino.cc/en/Main/OldSoftwareReleases).
 
 3. Setup your arduino like this 
-![alt text](https://github.com/JulesVautier/SensorsClasses/blob/master/FinalProject/Presentation/montage_schema_bb.png)
+![alt text](https://github.com/JulesVautier/FlappySound/blob/master/Presentation/montage_schema_bb.png?raw=true)
 
  Hardware:
 - arduino zero
